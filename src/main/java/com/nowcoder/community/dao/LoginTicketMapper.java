@@ -4,6 +4,8 @@ import com.nowcoder.community.entity.LoginTicket;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
+// 因为Redis重构，这个组件设置为不推荐使用
+@Deprecated
 public interface LoginTicketMapper {
 
 

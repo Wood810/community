@@ -18,4 +18,13 @@ public interface CommentMapper {
     // 增加评论，返回行数
     int insertComment(Comment comment);
 
+    // 查询评论
+    Comment selectCommentById(int id);
+
+    // 查询某用户写过的评论
+    List<Comment> selectCommentsByUser(int userId, int offset, int limit);
+
+    // 查询用户评论数
+    int selectCountByUser(int userId);
+
 }

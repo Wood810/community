@@ -12,6 +12,13 @@ public class RedisKeyUtil {
     private static final String PREFIX_FOLLOWEE = "followee";
     // 点关注的人
     private static final String PREFIX_FOLLOWER = "follower";
+    // 验证码使用Redis的前缀
+    private static final String PREFIX_KAPTCHA = "kaptcha";
+    // 用户登录凭证使用Redis的前缀
+    private static final String PREFIX_TICKET = "ticket";
+    // 缓存用户信息使用Redis的前缀
+    private static final String PREFIX_USER = "user";
+
 
     // 某个实体的赞
     // like:entity:entityType:entityId -> set(userId) 可能有存谁点的赞之类的功能，所以仅仅一个实数不合适，用SET更好
@@ -37,6 +44,20 @@ public class RedisKeyUtil {
         return PREFIX_FOLLOWER + SPLIT + entityType + SPLIT + entityId;
     }
 
+    // 登录验证码，登录网页时服务器给浏览器一个cookie包含识别浏览器的临时随机字符串（很快使其过期即可），把这个随机字符串作为识别标志发送验证码
+    public static String getKaptchaKey(String owner) {
+        return PREFIX_KAPTCHA + SPLIT + owner;
+    }
+
+    // 登录的凭证
+    public static String getTicketKey(String ticket) {
+        return PREFIX_TICKET + SPLIT + ticket;
+    }
+
+    // 缓存的登录用户
+    public static String getUserKey(int userId) {
+        return PREFIX_USER + SPLIT + userId;
+    }
 
 
 }
